@@ -36,11 +36,7 @@ app.get("/",(req,res)=>{
     
     res.json(student)  // send student list to server
   })
-  app.get("/student",(req,res)=>{
-    
-    console.log("Hi! i am "+ student+join(","))
-    alert(student_data)
-  })
+ 
 
 
 
