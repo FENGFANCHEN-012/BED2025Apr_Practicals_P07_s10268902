@@ -36,9 +36,10 @@ app.get("/",(req,res)=>{
     
     res.json(student)  // send student list to server
   })
-  app.get("/studet",(req,res)=>{
-    const student_data = req["name"]
-    console.log("Hi! i am "+res.json[0])
+  app.get("/student",(req,res)=>{
+    
+    console.log("Hi! i am "+ student+join(","))
+    alert(student_data)
   })
 
 
