@@ -1,14 +1,14 @@
 {
-  "name": "partb_homework",
+  "name": "practical01",
   "version": "1.0.0",
-  "main": "index2.js",
+  "description": "Welcome to the first practical session. This exercise is designed to help you get started with **Node.js** and the **Express** framework.",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
   "dependencies": {
     "express": "^5.1.0"
   }

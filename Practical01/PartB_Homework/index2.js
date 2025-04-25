@@ -1,6 +1,7 @@
 const express =  require("express")
 const app  = express();
 const PORT = 3001;
+
 app.get("/",(req,res)=>{
     res.send("Welcome to Homework API")
 })
@@ -24,6 +25,8 @@ app.get("/",(req,res)=>{
     res.send("western food")
   })
 
+
+
   app.get("/student",(req,res)=>{
     const student = {
         "name": "Alex",
@@ -31,12 +34,17 @@ app.get("/",(req,res)=>{
         "intro": "Hi, I'm Alex, a Year 2 student passionate about building APIs!"
       }
     
-    res.json(student)
+    res.json(student)  // send student list to server
   })
   app.get("/studet",(req,res)=>{
     const student_data = req["name"]
-    alert("Hi! I am "+ student_data)
+    console.log("Hi! i am "+res.json[0])
   })
+
+
+
+
+
   app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
   });
