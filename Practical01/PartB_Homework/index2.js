@@ -17,7 +17,6 @@ app.get("/",(req,res)=>{
   app.get("/hobbies",(req,res)=>{
     const hobby = ["coding", "reading", "cycling"]
     res.json(hobby)
-    
   })
  
 
@@ -34,12 +33,9 @@ app.get("/",(req,res)=>{
         "intro": "Hi, I'm Alex, a Year 2 student passionate about building APIs!"
       }
     
-    res.json(student)  // send student list to server
+    res.json(student["name"]+" like "+student["hobbies"]+" these are intro of him"+student["intro"])  // send student list to server
   })
  
-
-
-
 
 
   app.listen(PORT, () => {
