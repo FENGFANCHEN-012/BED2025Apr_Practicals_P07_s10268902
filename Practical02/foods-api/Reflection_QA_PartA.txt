@@ -1,0 +1,66 @@
+What did you learn about REST APIs?
+
+No Server-Side Session Storage
+
+The server doesn’t track user state (e.g., no "memory" of past requests).
+
+Scalability Since requests are independent, servers can handle them in any order or even distribute them across multiple machines (no shared state needed).
+
+Visibility & Reliability Each request contains all the context needed (e.g., headers like Authorization, parameters, or body data), making debugging easier.
+
+Client Responsibility The client (e.g., browser, app) must manage state (e.g., store tokens, track user progress) and include necessary data in each request.
+
+
+How did you understand the use of HTTP methods (GET, POST, PUT, DELETE)?
+
+GET	Retrieve resources from server, can use res.send to respond to the browser
+
+POST	Create new resources to the server
+
+PUT	Update/replace entire resource
+
+DELETE	Remove resources
+
+
+
+
+Did you face any challenges while building the CRUD operations?
+From the beginning, 
+First, understanding the structure of an Express application was new to me. I learned how express() sets up the server, how to use middleware like express.json() to parse JSON bodies, and how to define clean, RESTful routes such as POST /foods and GET /foods.
+
+When implementing the POST route, I realized the importance of input validation and error handling. Initially, I wrote simple conditionals to check for missing fields (e.g., if (user == null)), but I came to understand why structured validations (like checking data types, required fields, and empty strings) are crucial for reliability and security.
+
+In the GET route, I learned to use query parameters (e.g., req.query.name) to filter data and return more dynamic responses. I also practiced using array methods like .filter() to simulate querying a database.
+
+The PUT and DELETE routes introduced me to URL parameters (req.params.id) and taught me how to update or remove specific items using array operations. One challenge was managing data integrity without a real database — so I implemented a simple in-memory foods array with manually assigned IDs and learned the limitations of this approach.
+
+Another key learning was understanding how HTTP status codes (e.g., 200 OK, 400 Bad Request, 404 Not Found) help the client interpret what’s happening on the server side.
+
+Lastly, using tools like Postman helped me test each route, debug issues, and understand how HTTP requests and responses behave in real time.
+
+Through this project, I not only learned how to build CRUD operations, but also how to think critically about API design, maintainability, and data flow between client and server.
+
+Q&A 
+Why use POST for creating resources and PUT for updating?
+
+1. POST – Create a new resource:
+
+POST is used when you're sending data to the server to create a new resource.
+The server decides the new resource's ID .
+Example:
+POST /foods with body { "name": "Banana", "calories": 95 }
+The server might create it as { "id": 1, "name": "Banana", "calories": 95 }
+
+2. PUT – Using same ID to modify or replace content:
+
+PUT is idempotent, if you send the same request multiple times, the result doesn’t change after the first time.
+
+You provide the exact resource ID to update:
+PUT /foods/1 updates the food with ID 1.
+
+It replaces the resource completely or updates its fields, depending on implementation.
+
+
+What status code should be returned when attempting to update a non-existent resource?
+404 Not Found
+It tell user that resource tring to modify not exist.

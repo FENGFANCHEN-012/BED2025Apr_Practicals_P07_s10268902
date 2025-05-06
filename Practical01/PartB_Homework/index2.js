@@ -25,7 +25,7 @@ app.get("/",(req,res)=>{
   })
 
 
-app
+
   app.get("/student",(req,res)=>{
     const student = {
         "name": "Alex",

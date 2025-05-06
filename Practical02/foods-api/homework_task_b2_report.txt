@@ -1,0 +1,68 @@
+Task 1: Write a Short Report (Max 500 Words)
+In your foods-api API, describe the role of the following elements
+
+app.use(express.json())
+make sure all the resource update to server as json format
+
+req.body
+get resource of request main content from server 
+
+req.query
+
+req.params.id
+get id of request from server for the request
+
+Describe the significance of using different HTTP methods 
+(e.g., GET, POST, PUT, DELETE) in your API. How do they relate to CRUD operations?
+GET POST PUT DELETE are four different HTTP method , each of them has different function
+and different machanism， GET do role of C, it is send get resource request to the server 
+then server respond to browser or client with json format
+
+Post represent role of R, it create new resource request to the server, each request with different
+request id
+
+Put represent role of U(update) it change, modify , or update resource request to existing resource to the server
+multiple requests using same request id
+
+Delete represent role of D(delete), it send delete resource request to the server, delete the existing 
+resource in the server
+
+all of them are basic but essential to build functionality of api, they enable communication
+between server and client side, delete unwanted resource, update latest data, create new data
+for example, if a client want to get data from server which store the client's information, without get
+methods enable client to get resource from server。
+
+
+
+
+
+Explain the meaning of these HTTP status codes:
+
+200 OK
+200ok means request executed successfully, there is response of resource for the request
+
+
+201 Created
+successfully create new resource in the server
+
+400 Bad Request
+there is error or mistake of code of request sent to the server which can't processed or understood 
+by server， code of request may lack of some character or code is in wrong format
+
+404 Not Found
+request to the server searching for the resource does not found in the server 
+500 Internal Server Error
+there is error occur in the internal server, like server application get crash, logic of code of sever 
+error, database disconnect.
+
+
+Task 2: Capture Screenshots of Postman Tests
+POST /foods - Create a new food.
+
+GET /foods - Retrieve all foods.
+
+PUT /foods/:id - Update an existing food.
+
+DELETE /foods/:id - Delete a food by its ID.
+
+
