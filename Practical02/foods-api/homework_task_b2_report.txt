@@ -2,15 +2,23 @@ Task 1: Write a Short Report (Max 500 Words)
 In your foods-api API, describe the role of the following elements
 
 app.use(express.json())
-make sure all the resource update to server as json format
+This middleware enables the Express app to automatically parse incoming request bodies with JSON
+ payloads. It ensures that the server can handle and process JSON-formatted data, which is crucial
+ for REST APIs that use JSON as the standard data exchange format.
 
 req.body
-get resource of request main content from server 
+This contains the data sent by the client in the body of a request, typically used in POST and PUT 
+requests to create or update a resource.
+
+
 
 req.query
+This captures query parameters in the URL, usually used for filtering or sorting results (e.g., 
+/foods?calories=low).
 
 req.params.id
-get id of request from server for the request
+This retrieves the dynamic :id value from the URL path. It is commonly used to identify a specific 
+resource for GET, PUT, or DELETE operations.
 
 Describe the significance of using different HTTP methods 
 (e.g., GET, POST, PUT, DELETE) in your API. How do they relate to CRUD operations?
@@ -18,13 +26,19 @@ GET POST PUT DELETE are four different HTTP method , each of them has different 
 and different machanism， GET do role of C, it is send get resource request to the server 
 then server respond to browser or client with json format
 
-Post represent role of R, it create new resource request to the server, each request with different
+GET (get)
+Used to read or retrieve data from the server. For example, GET /foods fetches all food items.
+
+Post (create)
+represent role of C(create), it create new resource request to the server, each request with different
 request id
 
-Put represent role of U(update) it change, modify , or update resource request to existing resource to the server
+Put  (update)
+represent role of U(update) it change, modify , or update resource request to existing resource to the server
 multiple requests using same request id
 
-Delete represent role of D(delete), it send delete resource request to the server, delete the existing 
+Delete (delete)
+ represent role of D(delete), it send delete resource request to the server, delete the existing 
 resource in the server
 
 all of them are basic but essential to build functionality of api, they enable communication
@@ -50,7 +64,7 @@ there is error or mistake of code of request sent to the server which can't proc
 by server， code of request may lack of some character or code is in wrong format
 
 404 Not Found
-request to the server searching for the resource does not found in the server 
+request to the server searching for the resource does not found on the server 
 500 Internal Server Error
 there is error occur in the internal server, like server application get crash, logic of code of sever 
 error, database disconnect.
