@@ -43,7 +43,7 @@ app.post("/student", async (req,res)=>{
     
     request.input("name",sql.NVarChar,name)
     request.input("address",sql.NVarChar,student_info.address)
-     const sqlQuery = `INSERT INTO Students (name, address) VALUES (@name,@address); SELECT SCOPE_IDENTITY() AS id;`;
+     const sqlQuery = `INSERT INTO Students (name, address) VALUES (@name,@address); SELECT SCOPE_IDENTITY() AS studnet_id;`;
     const result = await request.query(sqlQuery)
       const newStudentId = result.recordset[0].student_id;
         res.status(201).json({
