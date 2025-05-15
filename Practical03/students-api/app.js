@@ -41,9 +41,9 @@ app.post("/student", async (req,res)=>{
     const request = connection.request();
     const {name,address} = req.body
     
-    request.input("name",sql.NVarChar,name)
+    request.input("name",sql.NVarChar,student_info.name)
     request.input("address",sql.NVarChar,student_info.address)
-     const sqlQuery = `INSERT INTO Students (name, address) VALUES (@name,@address); SELECT SCOPE_IDENTITY() AS studnet_id;`;
+     const sqlQuery = `INSERT INTO Students (name, address) VALUES (@name,@address); SELECT SCOPE_IDENTITY() AS student_id;`;
     const result = await request.query(sqlQuery)
       const newStudentId = result.recordset[0].student_id;
         res.status(201).json({
@@ -55,7 +55,7 @@ app.post("/student", async (req,res)=>{
         if(res.status(404)){
           res.send("404 not found")
         }
-        else if (req.status(500)){
+        else if (res.status(500)){
           res.send("Internal server error")
         }
 })
