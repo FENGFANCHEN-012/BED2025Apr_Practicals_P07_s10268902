@@ -1,0 +1,21 @@
+For example:
+Look at the code in the final app.js file (where all logic is in routes and no validation). How easy or difficult is it to read and understand 
+what's happening in each route handler compared to when the database logic was in separate functions?
+
+When all the logic is written directly inside the route handlers (like in the final app.js), it becomes harder to read and maintain. Each route
+ contains multiple concerns — HTTP handling, database queries, error handling — all mixed together. This makes the file long, cluttered, and harder to debug or reuse code.
+In contrast, when logic (like database queries) is placed into separate functions or modules, the route handlers become cleaner and easier to understand.
+ You can read one line like createBook(data) and instantly know what it's doing — and go to the function definition if needed.
+
+
+If you found a bug in how books are created in the database, which version of app.js would make it easiest to isolate and fix that bug?
+The version where the database logic is separated into its own function would make it much easier to isolate and fix the bug. You can go
+ directly to the createBook() function (or whatever helper handles book creation), test just that part, and fix it without touching the rest of the app.
+Having all logic in one big app.js file means you have to scroll through everything, and you risk accidentally breaking other routes while debugging.
+
+Did you face any challenges while implementing this practical?
+Yes, I faced challenges with the SQL syntax and using parameterized queries correctly. For example, I had a typo in sql.Int and got confusing errors when
+ using sql.query() instead of preparing the request properly with request.query(). I also had to learn how to use Postman correctly to send PUT and DELETE requests with the right URL and body.
+These challenges helped me understand the importance of error messages, proper syntax, and separating logic for clarity.
+
+
