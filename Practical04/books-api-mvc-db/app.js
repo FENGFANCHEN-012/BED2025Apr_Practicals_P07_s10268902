@@ -1,3 +1,4 @@
+const path = require("path");
 const express = require("express");
 const sql = require("mssql");
 const dotenv = require("dotenv");
@@ -19,6 +20,9 @@ app.use(express.json()); // Parse JSON request bodies
 app.use(express.urlencoded({ extended: true })); // Parse URL-encoded request bodies
 // --- Add other general middleware here (e.g., logging, security headers) ---
 
+
+
+app.use(express.static(path.join(__dirname, "public")));
 
 // Routes for books
 // Apply middleware *before* the controller function for routes that need it
