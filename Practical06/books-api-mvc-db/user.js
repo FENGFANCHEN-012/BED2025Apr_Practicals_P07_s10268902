@@ -17,12 +17,12 @@ app.use(express.urlencoded({ extended: true })); // Parse URL-encoded request bo
 
 
 
-app.use(express.static(path.join(__dirname, "public")));
+
 
 // Routes for books
 // Apply middleware *before* the controller function for routes that need it
 // existing code above
-const userController = require("./controllers/userController"); // Note: Changed to userController for consistency
+const userController = require("controllers/UserController"); // Note: Changed to userController for consistency
 
 // ... existing code in between
 

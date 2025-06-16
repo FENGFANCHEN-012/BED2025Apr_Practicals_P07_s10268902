@@ -19,3 +19,29 @@ Yes, I faced challenges with the SQL syntax and using parameterized queries corr
 These challenges helped me understand the importance of error messages, proper syntax, and separating logic for clarity.
 
 
+Node.js	JavaScript runtime for server-side programming
+Express.js	Web framework for creating routes, APIs, and handling HTTP requests
+MSSQL	Using Microsoft SQL Server as a backend database
+MVC Architecture	Separating concerns via Model, View, Controller structure
+Database Config (dbConfig)	Connecting to the SQL Server via configuration file
+Joi Validation	Validating input data using the Joi library
+Routing	Setting up app.get(), app.post() with Express
+Controllers	Business logic to handle requests/responses
+Models	Database interaction layer using async functions
+Middleware	Custom middleware for validation and logging
+Asynchronous Programming	Using async/await to handle non-blocking DB operations
+Error Handling	Try-catch blocks for handling database and logic errors
+
+
+
+(i) Why is dbConfig required?
+dbConfig stores the configuration (host, username, password, database name, etc.) needed to connect to the SQL Server. Without it, the sql.connect() function wouldn’t know where or how to connect.
+
+(ii) Purpose of async and await:
+async marks a function as asynchronous, allowing it to use await and return a promise.
+
+await pauses the function execution until the awaited promise (e.g., sql.connect) resolves, making code easier to read and write without using .then() chaining.
+
+(iii) Why use asynchronous operations?
+Because database queries take time. Using asynchronous operations ensures the server remains non-blocking and responsive while waiting for the database response.
+

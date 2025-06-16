@@ -126,6 +126,18 @@ async function searchUsers(searchTerm) {
     }
   }
 }
+async function getAllPizza(){
+     try{
+      
+      const connection = await sql.connect(dbConfig)
+      const app = connection.request();
+      app.input("")
+      app.input("")
+      query = `SELECT * FROM Books`
+
+
+     }
+}
 async function getUsersWithBooks() {
   let connection;
   try {
