@@ -1,5 +1,71 @@
 const userModel = require("../models/userModel");
 
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+
+
+async function registerUser(req, res) {
+  const { username, password, role } = req.body;
+
+  try {
+     if (!username || !password || !role) {
+      return res.status(400).json({ message: "Username, password and role are required" });
+    }
+    const existingUser = await getUserByUsername(username);
+    if (existingUser) {
+      return res.status(400).json({ message: "Username already exists" });
+    }
+     if(password.length<6){
+      return res.status(400).json({ message: "Password must be at least 6 digit" })
+     }
+     if( ["Library Member","Librarian"].includes(password)){
+      return res.status(400).json({ message: "Password must be at least 6 digit" })
+     }
+    // Hash password
+
+     const token = jwt.sign(
+      { id: newUser.id, role: newUser.role },
+      process.env.JWT_SECRET_Password,
+      { expiresIn: '1h' }
+    );
+
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
+     const newUser = await userModel.createUser({
+      username,
+      passwordHash: hashedPassword,
+      role
+    });
+
+  
+    return res.status(201).json({ 
+      message: "User created successfully",
+      user:{
+          username: newUser.username,
+          passwordHash :hashedPassword,
+          role: newUser.role
+      },
+      token: token
+    });
+  } catch (err) {
+    console.error("Registration error:", err);
+    return res.status(500).json({ message: "Internal server error" });
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 async function getAllUsers(req, res) {
   try {
     const user = await userModel.getAllUsers;
@@ -93,5 +159,7 @@ async function getUsersWithBooks(req, res) {
   }
 }
 module.exports = {
-  getAllUsers,getUserById,deleteUser,createUser,updateUser, searchUsers, getUsersWithBooks,
+  getAllUsers,getUserById,deleteUser,createUser
+  ,updateUser, searchUsers, getUsersWithBooks,
+  registerUser
 };

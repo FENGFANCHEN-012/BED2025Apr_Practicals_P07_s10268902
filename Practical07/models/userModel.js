@@ -6,9 +6,12 @@ const { use } = require("react");
 async function createUser(userinput){
     try{
     let connection = await sql.connect(dbConfig)
+     const query = `INSERT INTO Users (username,email) VALUE (@username,@email,@passwordhash,@role) ;SCOPE_IDENTITY() AS id;`
        request.input("username",userinput.username)
      request.input("email",userinput.email)
-    const query = `INSERT INTO Users (username,email) VALUE (@username,@email) ;SCOPE_IDENTITY() AS id;`
+        request.input("passwordhash",userinput.passwordhash)
+           request.input("role",userinput.role)
+   
     let request = connection.request();
   
     
