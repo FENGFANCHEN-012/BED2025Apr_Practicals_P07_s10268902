@@ -18,7 +18,13 @@ const {
 // Create Express app
 const app = express();
 const port = process.env.PORT || 3000;
+const userController = require("./controllers/userController");
 
+app.get("/users", userController.getAllUsers);
+app.get("/users/:id", userController.getUserById);
+app.post("/users", userController.createUser);
+app.put("/users/:id", userController.updateUser);
+app.delete("/users/:id", userController.deleteUser);
 
 
 
