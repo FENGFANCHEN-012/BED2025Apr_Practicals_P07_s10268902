@@ -21,5 +21,41 @@ app.use(morgan("dev"));
 app.use("/", authRoutes);
 app.use("/books", verifyJWT, bookRoutes);
 
+
+
+
+
+
+
+
+
+///////////////
+
+const express = require("express");
+const cors = require("cors");
+const swaggerUi = require("swagger-ui-express");
+const swaggerDocument = require("./swagger-output.json");
+
+const app = express();
+const port = 3000;
+
+// Middleware
+app.use(cors());
+app.use(express.json());
+
+// Routes
+const bookRoutes = require("./routes/bookRoutes");
+app.use("/api/books", bookRoutes);
+
+// Swagger UI
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
+// Root
+app.get("/", (req, res) => {
+  res.send("Welcome to the Polytechnic Library API!");
+});
+
+
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
